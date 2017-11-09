@@ -1,0 +1,33 @@
+#:kivy 1.0.9
+
+<Button>:
+    font_size: 40
+	color: 0,1,0,1
+	size_hint: 0.3, 0.2 
+
+<MainControl>:    
+	BoxLayout:
+		orientation: 'vertical'
+		BoxLayout:
+			size_hint_y: None
+			height: sp(100)
+			BoxLayout:
+				orientation: 'vertical'
+				Label:
+					text: 'Time = {}'.format(root.currentDateTime)
+			BoxLayout:
+				orientation: 'vertical'
+				Label:
+					text: 'Latitude = {}'.format(root.currentLat)
+			BoxLayout:
+				orientation: 'vertical'
+				Label:
+					text: 'Longitude = {}'.format(root.currentLong)
+			BoxLayout:
+				orientation: 'vertical'
+				Label:
+					text: 'Altitude = {}'.format(root.currentAlt)
+			BoxLayout:
+				orientation: 'vertical'
+				Button:
+					text: 'start/stop'
