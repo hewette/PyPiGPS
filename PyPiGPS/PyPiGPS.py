@@ -1,42 +1,39 @@
 #!  /usr/bin/python
 from GPSCapture import GPSCapture
-#from kivy.app import App
-#from kivy.uix.widget import Widget
-#from kivy.uix.label import Label
-#from kivy.properties import StringProperty
+
 import sys
 import logging
 from logging.config import fileConfig
 from log import setup_custom_logger
+from Tkinter import *
+import tkFont
 #logger = setup_custom_logger('main')
 
-#class MainControl(Widget):
-#    gpsCapture = GPSCapture()
-#    currentLat = StringProperty()
-#    currentLong = StringProperty()
-#    currentDateTime= StringProperty()
-#    currentAlt = StringProperty()
+class PyPiGPSMain():
+    def  exitProgram(self):
+        self.win.quit()
 
-#    def update(self, dt):
-#        self.gpsCapture.findSerial()
-#        self.gpsCapture.gpsdata()
-#        currentLat = self.gpsCapture.currentLat
-#        currentLong = self.gpsCapture.currentLong
-#        currentDateTime=self.gpsCapture.currentDateTime
-#        currentAlt=self.gpsCapture.currentAlt
+    def build(self):
+        self.win = Tk()
+        self.myfont = tkFont.Font(family='Helvetic', size = 35, weight ='bold')
+        self.gpsCapture = GPSCapture()        
+        self.win.title("Pi GPS")
+        self.win.geometry('800x480')
+        Label(self.win, text= "Hello", bg = "black", fg = "white", font = "none 12 bold").grid(row=0, column=0,sticky=W)
+        exitButton = Button(self.win, text = 'Exit', font = self.myfont, command = self.exitProgram()).grid(row=3, column=0,sticky=W)
+        #gpsCapture.findSerial()
+        #gpsCapture.gpsdata()
 
-#class PyPiGPSMain(App):
-#    def build(self):
-#        mainControl = MainControl()
-#        Clock.schedule_interval(mainControl.update, 1.0/60.0)
-#        return mainControl
+        self.win.mainloop()
+
+
+
 
 def main():
-    #PyPiGPSMain().run()
+    main =  PyPiGPSMain()
+    main.build()
     logger.info('Starting main')
-    gpsCapture = GPSCapture()
-    gpsCapture.findSerial()
-    gpsCapture.gpsdata()
+
 
 
 if __name__ == "__main__":
