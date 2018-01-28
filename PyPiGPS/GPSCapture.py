@@ -7,7 +7,7 @@ from pynmea import nmea
 import os
 from datetime import datetime, date, timedelta
 from time import sleep
-from CameraControl import CameraControl 
+#from CameraControl import CameraControl 
 import logging
 from logging.config import fileConfig
 from log import setup_custom_logger
